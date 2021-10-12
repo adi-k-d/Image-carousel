@@ -5,7 +5,7 @@ const header = () => {
         
             
         <header>
-            <h1>Task Tracker</h1>
+            <h1>Slider</h1>
         </header>
     )
 }

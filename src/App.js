@@ -1,6 +1,9 @@
 import './App.css';
+import Categories from './components/Categories';
+import Files from './components/Files';
 import Header from './components/Header'
 import ImageSlider from './components/ImageSlider';
+import Preview from './components/Preview';
 import { SliderData } from './components/SliderData';
 
 function App() {
@@ -10,6 +13,9 @@ function App() {
     <div className='container'>
       <Header/>
       <ImageSlider slides={SliderData} />;
+      <Categories/>
+      <Files/>
+      <Preview/>
     </div>
   );
 }
