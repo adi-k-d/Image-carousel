@@ -8,12 +8,16 @@ import { SliderData } from './components/SliderData';
 
 
   var topic=[];
+  var objects = {}
   var count=[];
+  var imgArr=[ 
+  ];
   const imgUrls = []
   var files=[];
   const thumbs = [];
   var amount;
   var limit=0;
+  var names;
   const categoriesData = [
 
 
@@ -163,44 +167,56 @@ const Categories = () => {
     
     
   const categories = [
-    {Category: 'Fashion', Number:6,},
+    {Category: 'Fashion', Number:5,},
     {Category: 'Film', Number:6,},
-    {Category: 'Food', Number:6,},
-    {Category: 'Media', Number:6,},
-    {Category: 'Health', Number:6,},
-    {Category: 'Fashion', Number:6,},
-    {Category: 'Film', Number:6,},
-    {Category: 'Food', Number:6,},
-    {Category: 'Media', Number:6,},
-    {Category: 'Health', Number:6,},
+    {Category: 'Food', Number:7,},
+    {Category: 'Media', Number:8,},
+    {Category: 'Health', Number:9,},
+    {Category: 'Fashion', Number:10,},
+    {Category: 'Film', Number:11,},
+    {Category: 'Food', Number:12,},
+    {Category: 'Media', Number:13,},
+    {Category: 'Health', Number:14,},
   ]
   
   
   const getImg=5;
   const[results,setResults]=useState([])
+  // const[images,getImages]=useState([])
   const fetchImages = ()=>{
 
     fetch(`https://api.unsplash.com/photos/random?count=20&orientation=portrait&client_id=clP4T66s_UN1CL55zE7agYJQufo9FqjOu0yVRe_sAhA`)
     .then(res=>res.json())
     .then(data=>{
-      console.log(topic,data[0].urls.regular,count)
+      
       setResults(data.results) 
       
-      for (let index = 0; index < amount; index++) {
+      for (let index = 0; index < count; index++) {
         files.push(data[index].id)
-        thumbs.push(data[index].urls.thumb)
-        imgUrls.push(data[index].urls.regular)
-        console.log('hi')
+        
+        imgArr.push(data[index].urls.regular)
+        
       }
-      amount=0;
+
+      console.log(count)
+      // var b= amount
+      // console.log(files,imgArr,b)
+      count=0;
+      files=[];
+      imgArr=[];
+      console.log(count)
       
 
       
       
-      console.log(files)
+      // console.log(files)
       // console.log(Object.entries(categoriesData).key)  
     })   
   }
+
+  const handler = function(e){
+    console.log(e.target.value); //will log the index of the clicked item
+};
   
   
         
@@ -214,9 +230,9 @@ const Categories = () => {
               //console.log(arr[1].Number)
               return (
                 <li key={index}>
-                <button onClick = {()=>{fetchImages();amount=count}} >
-                
-                {arr[1].Category}
+                <button onClick = { handler } >
+                {arr[1].Category}-
+                {arr[1].Number}
                 </button>
                 
               </li>
